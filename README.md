@@ -1,65 +1,5 @@
-===============================  
- work in progres - cheat sheet  
-  .MD -- *formatting* :  
-
-This text is ***really important***!  
-**fat-text**  
-*italic*  
-
-  # Header - big  
-  ...  
-  ###### Header - small   
-
----
-
-*LISTS*:  
-1. step one
-2. step two
-
-* Item one
-* Item two
-
-- First item
-- Second item
-- Third item
-    - Indented item
-    - Indented item
-- Fourth item
- 
-*CODE*:  
-`Inlinecode`  
-
-```
-Beispiel für 
-einen Codeblock.
-```
-
-*COMMENTS*:  
-> Blockzitate müssen mit einer  
-> Leerzeile beginnen  
-> und enden  
-
-> Nested code  
-> block :  
->> example  
-
-> #### ADVANCED EXAMPLE!  
->  
-> - Beautiful  
-> - Nested  
->  
->  *COMMENTS* are **very ***nice*** to read**.  
-
-
-*LINKS*:  
-![Optionaler Alternativtext, falls sich das Bild nicht laden lässt](http://www.sampleurl.com/logo.png)  
-[Text to show on a link](http://www.sampleurl.com)  
-[![Alt-Text](imageurl)](linkurl)  
-
-===============================
-
-# Uebung-020  --  ...
-
+# Uebung-027  --  Einfacher Vokabeltrainer
+<!--
 ## Lernziele:
 
 ## Aufgabenstellung:
@@ -67,19 +7,97 @@ einen Codeblock.
 ### Beispiel:
 ### Beispielausgabe:
 
-#### Hinweis:
-
--------------------------------
-## *Zusatzaufgabe:*
-
-
-
-
--------------------------------
+#### Hinweis: -->
+------------------------------
 # **SPOILER**
+```c#
+namespace EinfacherVokabeltrainer
+{
+  internal class Program
+  {
+    static void Main()
+    {
+      // declare VARIABLES  ////////////////////////////////
+      string userInput,     //  Benutzereingabe
+             vokabelEng,    //  englischer Vokabel
+             vokabelDe;     //  deutscher Vokabel
+         int versuchNr;     //  Versuchsnummer
+        bool abort = false; //  
 
-## PAP-Designer:
+      ////  CLEAR SCREEN  &  HEADER  ///////////////////////
+      Console.Clear();
+      Console.Write("\n  einfacher Vokabel-Trainer  " +
+                    "\n=============================");
+      ////  USER INPUT  ////////////////////////////////////
+      ///  TEACHER
+      Console.Write("\n Lehrer-Abschnitt:  " +
+                    "\n--------------------" +
+                    "\n englisches Wort:   \n");
+      userInput = Console.ReadLine();
+      vokabelEng = userInput;
 
-## Visual Studio:
+      Console.Write("\n deutsche Übersetzung:  " +
+                    "\n------------------------\n");
+      userInput = Console.ReadLine();
+      vokabelDe = userInput;
 
-## Ausgabe:
+      ///  STUDENT
+      Console.Clear();
+      Console.Write("\n  einfacher Vokabel-Trainer  " +
+                    "\n=============================" +
+                    "\n Schüler-Abschnitt: " +
+                    "\n--------------------" +
+                    "\n gib die deutsche Übersetzung für " +
+                   $"\n  {vokabelEng} ein.  ");
+      ////  CALCULATION  ///////////////////////////////////
+      for (versuchNr = 0; (versuchNr <= 10) && (abort == false); versuchNr++)
+      {
+        Console.Write($"\n Versuch {versuchNr + 1}:  ");
+        userInput = Console.ReadLine();
+        abort = (userInput == vokabelDe) ? true : false;
+      }
+      if (userInput != vokabelDe)
+      {
+        Console.Write("\n Das war wohl nichts!");
+      }
+      switch (versuchNr)
+      {
+        case 1:
+          {
+            Console.Write("\n Toll beim ersten Versuch!");
+            break;
+          }
+        case 2:
+        case 3:
+          {
+            Console.Write($"\n Gut gemacht nur {versuchNr} Versuche!");
+            break;
+          }
+        case 4:
+        case 5:
+          {
+            Console.Write("\n Nur noch ein bischen üben!");
+            break;
+          }
+        case 6:
+        case 7:
+        case 9:
+          {
+            Console.Write("\n Üben, üben, üben!");
+            break;
+          }
+        default:
+          {
+            Console.Write("\n Das war wohl nichts!");
+            break;
+          }
+      }
+      ////  EXIT PROMPT  ///////////////////////////////////
+      Console.Write("\n══════════════════════════════════" +
+                    "\n Beenden mit beliebiger Taste ... ");
+      Console.ReadKey();
+      Console.Clear();
+    }
+  }
+}
+```
